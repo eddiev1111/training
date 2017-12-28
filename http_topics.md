@@ -16,16 +16,6 @@ DELETE (Delete :P)
 * 4xx: error, user / client's fault
 * 5xx: error, server's fault
 * 1xx: not done yet, but still here
-*
-* 302: "found" (moved temporarily)
-* browser redirects to location header url
-* many libraries and command line tools automatically redirect
-* next request, they'll come back to the original url
-*
-* 301: moved permanently
-* browser redirects to location header url
-* browser will cache the result
-* search engines will forward link love
 
 #### What happens when I type a url?
 * resolve url to ip
