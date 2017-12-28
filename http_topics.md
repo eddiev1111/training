@@ -50,4 +50,7 @@ DELETE (Delete :P)
 * includes http header: "hostname: foo.com"
 
 #### Node (Anatomy of an HTTP Transaction)
-
+* Step 1 - Establish a TCP connection from the client to the server
+* Step 2 - Client initiates an HTTP GET request to the server
+* Step 3 - HTTP server response to the HTTP GET request
+* Step 4 - Render HTML to the browser
