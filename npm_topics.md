@@ -1,4 +1,4 @@
-## Table of Contents
+# Table of Contents
 
 1. [Initialize Project](#initialize-project)
 1. [Semantic Versioning](#semantic-versioning)
@@ -113,26 +113,33 @@ Go to the lib directory created and see the new index.js file converted to ES5
 cd ./lib
 ```
 
+## [Linting NPM Packages](#https://en.wikipedia.org/wiki/Lint_%28software%29)
 
-## Linting NPM Packages (https://en.wikipedia.org/wiki/Lint_%28software%29)
-	>  ESLint, JSHint, and JSLint
+Most popular lint analizers [ESLint](#https://eslint.org/), [JSHint](#http://jshint.com/), and [JSLint](#http://www.jslint.com/)
 
-## We have to instruct NPM to install it for us, then we can use the --init option provided by ESLint to generate a configuration file:
+We have to instruct NPM to install it for us, then we can use the --init option provided by ESLint to generate a configuration file:
 
-# saving ESLint as a development dependency
+Saving ESLint as a development dependency
 ```
 npm i -D eslint
 ```
+This is the same as
+```
+npm install --save-dev eslint
+```
 
-# initializing the configuration file
+### Initializing the configuration file
+```
 ./node_modules/.bin/eslint --init
+```
+Answer the questions
 
-	* How would you like to configure ESLint? Use a popular style guide
-	* Which style guide do you want to follow? Airbnb
-	* Do you use React? No
-	* What format do you want your config file to be in? JSON
+* How would you like to configure ESLint? **Use a popular style guide**
+* Which style guide do you want to follow? **Airbnb**
+* Do you use React? **No**
+* What format do you want your config file to be in? **JSON**
 
- ## This will generate a small file called .eslintrc.json with the following content:
+This will generate a small file called .eslintrc.json with the following content:
 ```
 {
     "extends": "airbnb-base"
@@ -141,7 +148,7 @@ npm i -D eslint
 
 What is nice about ESLint is that it also enables us to adhere to popular style guides (in this case the Airbnb JavaScript Style Guide). There are other popular styles available to JavaScript developers and we could even create our own. However, to play safe, we will stick to an existing and popular choice.
 
-## To add ESLint to our build process, we can create a new script that executes ESLint and make it run in the build script:
+To add ESLint to our build process, we can create a new script that executes ESLint and make it run in the build script:
 ```
 {
   ...
@@ -154,9 +161,7 @@ What is nice about ESLint is that it also enables us to adhere to popular style 
 }
 ```
 
-## publish npm package
-	* npm config ls (see user settings)
-
+## Publish NPM Package
 What we want instead is to automatically tie the build script to publish. Luckily for us, when NPM is publishing a new version of a package, it checks the package.json file to see if there is a script called prepublishOnly. If NPM finds this script, it runs whatever command is inside it. Therefore, what we have to do is to configure prepublishOnly in our package.json file as follows:
 
 ```
@@ -170,14 +175,24 @@ What we want instead is to automatically tie the build script to publish. Luckil
 }
 ```
 
-Hurray! Looks like we are ready to publish our package. Let's run npm publish and make it available to the world. Note that, before publishing, we might need to create a NPM user and to login to our NPM CLI (npm login).
+Looks like we are ready to publish our package. Let's run npm publish and make it available to the world. Note that, before publishing, we might need to create a NPM user and to login to our NPM CLI (npm login).
+```
+npm publish
+```
 
-## Locally test your npm modules without publishing them to npmjs.org
-	* cd /path/to/package.json
-	* npm pack (This will create, in the same directory, a tarball named after the name of the project + the version specified in the package.json.)
-	* tar -tf packagename-version.tgz (This is exactly what is published to npmjs.org! You can now see what’s inside)
-	* Or you can install it in your project to test it in integration.
-		cd path/to/your/project/
-		npm install ../path/to/your/npm/packagename-version.tgz
+## Test Package Locallly
+Locally test your npm modules without publishing them to npmjs.org
 
-## .npmrc
+This will create, in the same directory, a tarball named after the name of the project + the version specified in the package.json.
+```
+npm pack 
+```
+This is exactly what is published to npmjs.org! You can now see what’s inside
+```
+tar -tf packagename-version.tgz
+```
+Or you can install it in your project to test it in integration.
+```
+cd path/to/your/project/
+npm install ../path/to/your/npm/packagename-version.tgz
+```
