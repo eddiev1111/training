@@ -31,7 +31,7 @@ Topics
 	> Add Author
 	> Modify "main"
 
-- Explain Semantic Versioning (https://semver.org/)
+# Explain Semantic Versioning (https://semver.org/)
 
 In this section, we are not going to change anything in our project. The focus here is to talk about how to label new releases of our package. In the NPM and Node.js landscape, the most used strategy is by far Semantic Versioning. What makes this strategy so special is that it has a well-defined schema that makes it easy to identify what versions are interoperable.
 
