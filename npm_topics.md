@@ -1,37 +1,32 @@
-Topics
+# Topics
 
-- GIT
-- .gitignore
-- NPM
-- .npmignore
-- package.json
-- Semantic Versioning
-- editorconfig
-- babelrc
-- build
-- Linting NPM Packages
-- publish npm package
-- test package locallly
-- .npmrc X      
+* GIT
+* .gitignore
+* NPM
+* .npmignore
+* package.json
+* Semantic Versioning
+* editorconfig
+* babelrc
+* build
+* Linting NPM Packages
+* publish npm package
+* test package locallly
+* .npmrc X      
 
 - create directory
-
 - git Init
-
 - .gitignore
 	> add lib/
-
 - .npmignore
 	> add node_modules/
-
 - npm init -y
-
 - modify package.json
 	> Add Description
 	> Add Author
 	> Modify "main"
 
-# Explain Semantic Versioning (https://semver.org/)
+## Explain Semantic Versioning (https://semver.org/)
 
 In this section, we are not going to change anything in our project. The focus here is to talk about how to label new releases of our package. In the NPM and Node.js landscape, the most used strategy is by far Semantic Versioning. What makes this strategy so special is that it has a well-defined schema that makes it easy to identify what versions are interoperable.
 
@@ -44,7 +39,7 @@ That is, if we have a problem with our code and fix it simply by changing an if 
 
 - .editorconfig (http://editorconfig.org/)
 
-# Editor configuration, see http://editorconfig.org
+## Editor configuration, see http://editorconfig.org
 root = true
 
 [*]
@@ -54,20 +49,22 @@ indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-- ES6+: Developing with Modern JavaScript
-	> Javascript Engines (https://en.wikipedia.org/wiki/JavaScript_engine#Implementations)
-	> ES6 Compatibility (https://babeljs.io/)
+## ES6+: Developing with Modern JavaScript
+	* Javascript Engines (https://en.wikipedia.org/wiki/JavaScript_engine#Implementations)
+	* ES6 Compatibility (https://babeljs.io/)
 
-- .babelrc
+## .babelrc
 
+```
 npm install --save-dev babel-cli babel-preset-env
-
 echo '{
   "presets": ["env"]
 }' >> .babelrc
+```
 
-- ./package.json
+## ./package.json
 
+```
 {
   ...
   "scripts": {
@@ -76,47 +73,53 @@ echo '{
   }
   ...
 }
+```
 
-- create dir ./src
+## create dir ./src
 
-- create index.js at root
+## create index.js at ./src
 
+```
 function sayHiTo(name) {
   return `Hi, ${name}`;
 }
 
 module.exports = sayHiTo;
+```
 
-- npm run build
+## npm run build
 
-- show the index.js converted of the ./lib
+## show the index.js converted of the ./lib
 
-- Linting NPM Packages (https://en.wikipedia.org/wiki/Lint_%28software%29)
+## Linting NPM Packages (https://en.wikipedia.org/wiki/Lint_%28software%29)
 	>  ESLint, JSHint, and JSLint
 
-- We have to instruct NPM to install it for us, then we can use the --init option provided by ESLint to generate a configuration file:
+## We have to instruct NPM to install it for us, then we can use the --init option provided by ESLint to generate a configuration file:
 
 # saving ESLint as a development dependency
+```
 npm i -D eslint
+```
 
 # initializing the configuration file
 ./node_modules/.bin/eslint --init
 
-	> How would you like to configure ESLint? Use a popular style guide
-	> Which style guide do you want to follow? Airbnb
-	> Do you use React? No
-	> What format do you want your config file to be in? JSON
+	* How would you like to configure ESLint? Use a popular style guide
+	* Which style guide do you want to follow? Airbnb
+	* Do you use React? No
+	* What format do you want your config file to be in? JSON
 
-- This will generate a small file called .eslintrc.json with the following content:
-
+ ## This will generate a small file called .eslintrc.json with the following content:
+```
 {
     "extends": "airbnb-base"
 }
+```
 
 What is nice about ESLint is that it also enables us to adhere to popular style guides (in this case the Airbnb JavaScript Style Guide). There are other popular styles available to JavaScript developers and we could even create our own. However, to play safe, we will stick to an existing and popular choice.
 
-- To add ESLint to our build process, we can create a new script that executes ESLint and make it run in the build script:
-
+## To add ESLint to our build process, we can create a new script that executes ESLint and make it run in the build script:
+```
 {
   ...
   "scripts": {
@@ -126,12 +129,14 @@ What is nice about ESLint is that it also enables us to adhere to popular style 
   },
   ...
 }
+```
 
-- publish npm package
-	> npm config ls (see user settings)
+## publish npm package
+	* npm config ls (see user settings)
 
 What we want instead is to automatically tie the build script to publish. Luckily for us, when NPM is publishing a new version of a package, it checks the package.json file to see if there is a script called prepublishOnly. If NPM finds this script, it runs whatever command is inside it. Therefore, what we have to do is to configure prepublishOnly in our package.json file as follows:
 
+```
 {
   ...
   "scripts": {
@@ -140,19 +145,16 @@ What we want instead is to automatically tie the build script to publish. Luckil
   },
   ...
 }
+```
 
 Hurray! Looks like we are ready to publish our package. Let's run npm publish and make it available to the world. Note that, before publishing, we might need to create a NPM user and to login to our NPM CLI (npm login).
 
-- Locally test your npm modules without publishing them to npmjs.org
-	> cd /path/to/package.json
-	> npm pack (This will create, in the same directory, a tarball named after the name of the project + the version specified in the package.json.)
-	> tar -tf packagename-version.tgz (This is exactly what is published to npmjs.org! You can now see what’s inside)
-	> Or you can install it in your project to test it in integration.
+## Locally test your npm modules without publishing them to npmjs.org
+	* cd /path/to/package.json
+	* npm pack (This will create, in the same directory, a tarball named after the name of the project + the version specified in the package.json.)
+	* tar -tf packagename-version.tgz (This is exactly what is published to npmjs.org! You can now see what’s inside)
+	* Or you can install it in your project to test it in integration.
 		cd path/to/your/project/
 		npm install ../path/to/your/npm/packagename-version.tgz
 
-- .npmrc
-
-
-
-
+## .npmrc
