@@ -5,6 +5,7 @@
 1. [Editor Config](#editor-config)
 1. [Babel](#babel)
 1. [Build](#build)
+1. [Source File](#source-file)
 1. [Linting NPM Packages](#linting-npm-packages)
 1. [Publish NPM Package](#publish-npm-package)
 1. [Test Package Locallly](#test-package-locallly)
@@ -62,13 +63,12 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 ```
 
-## ES6+: Developing with Modern JavaScript
-[Javascript Engines](#https://en.wikipedia.org/wiki/JavaScript_engine#Implementations)
+## Babel
+#### ES6+: Developing with Modern JavaScript
+* [Javascript Engines](#https://en.wikipedia.org/wiki/JavaScript_engine#Implementations)
+* [ES6 Compatibility](#https://babeljs.io/)
 
-[ES6 Compatibility](#https://babeljs.io/)
-
-## .babelrc
-
+Create the .babelrc file
 ```
 npm install --save-dev babel-cli babel-preset-env
 echo '{
@@ -76,8 +76,8 @@ echo '{
 }' >> .babelrc
 ```
 
-## ./package.json
-
+## Build
+Add the build tag to the scripts tag in the package.json file.
 ```
 {
   ...
@@ -89,10 +89,14 @@ echo '{
 }
 ```
 
-## create dir ./src
-
-## create index.js at ./src
-
+## Source File
+Create the source directory in the root of the project
+```
+mkdir ./src
+cd src/
+vi index.js
+```
+Add the following lines to the index.js file
 ```
 function sayHiTo(name) {
   return `Hi, ${name}`;
@@ -100,10 +104,15 @@ function sayHiTo(name) {
 
 module.exports = sayHiTo;
 ```
+Build the package
+```
+npm run build
+```
+Go to the lib directory created and see the new index.js file converted to ES5
+```
+cd ./lib
+```
 
-## npm run build
-
-## show the index.js converted of the ./lib
 
 ## Linting NPM Packages (https://en.wikipedia.org/wiki/Lint_%28software%29)
 	>  ESLint, JSHint, and JSLint
