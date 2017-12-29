@@ -1,32 +1,45 @@
-# Topics
+## Table of Contents
 
-* GIT
-* .gitignore
-* NPM
-* .npmignore
-* package.json
-* Semantic Versioning
-* editorconfig
-* babelrc
-* build
-* Linting NPM Packages
-* publish npm package
-* test package locallly
-* .npmrc X      
+1. [Initialize Project](#initialize-project)
+1. [Semantic Versioning](#semantic-versioning)
+1. [Editor Config](#editor-config)
+1. [Babel](#babel)
+1. [Build](#build)
+1. [Linting NPM Packages](#linting-npm-packages)
+1. [Publish NPM Package](#publish-npm-package)
+1. [Test Package Locallly](#test-package-locallly)
 
-- create directory
-- git Init
-- .gitignore
-	> add lib/
-- .npmignore
-	> add node_modules/
-- npm init -y
-- modify package.json
-	> Add Description
-	> Add Author
-	> Modify "main"
+## Initialize Project
+Create main directory
+```
+mkdir npm101
+```
+Initialize git
+```
+git Init
+```
+Create .gitignore and add lib dir
+```
+vi .gitignore
+echo 'lib/' >> .babelrc
+```
+Create .npmignore and add npm_modules
+```
+vi .npmignore
+echo 'npm_modules/' >> .babelrc
+```
+Initialize npm. This command will create the package.json file
+```
+npm init -y
+```
+Modify package.json
+```
+add "description"
+add "author"
+modify "main"
+```
 
-## Explain Semantic Versioning (https://semver.org/)
+## [Semantic Versioning](#https://semver.org/)
 
 In this section, we are not going to change anything in our project. The focus here is to talk about how to label new releases of our package. In the NPM and Node.js landscape, the most used strategy is by far Semantic Versioning. What makes this strategy so special is that it has a well-defined schema that makes it easy to identify what versions are interoperable.
 
@@ -37,9 +50,8 @@ MINOR: A number that we increment when we add features in a backwards-compatible
 PATCH: A number that we increment when we make small bug fixes.
 That is, if we have a problem with our code and fix it simply by changing an if statement, we have to increment the PATCH part: 1.0.0 => 1.0.1. However, if we need to add a new function (without changing anything else) to handle this new scenario, then we increment the MINOR part: 1.0.0 => 1.1.0. Lastly, if this bug is so big that requires a whole lot of refactoring and API changes, then we increment the MAJOR part: 1.0.0 => 2.0.0.
 
-- .editorconfig (http://editorconfig.org/)
-
-## Editor configuration, see http://editorconfig.org
+## [Editor Config](#http://editorconfig.org/)
+```
 root = true
 
 [*]
@@ -48,10 +60,12 @@ indent_style = space
 indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
+```
 
 ## ES6+: Developing with Modern JavaScript
-	* Javascript Engines (https://en.wikipedia.org/wiki/JavaScript_engine#Implementations)
-	* ES6 Compatibility (https://babeljs.io/)
+[Javascript Engines](#https://en.wikipedia.org/wiki/JavaScript_engine#Implementations)
+
+[ES6 Compatibility](#https://babeljs.io/)
 
 ## .babelrc
 
